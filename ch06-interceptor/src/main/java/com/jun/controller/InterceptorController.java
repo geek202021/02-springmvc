@@ -10,14 +10,14 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class InterceptorController {
-    @RequestMapping(value = "/second.do")
+    @RequestMapping(value = "/show.do")
     public ModelAndView doSome(String name, Integer age) {
         System.out.println("执行了InterceptorController的doSome方法");
         ModelAndView mv = new ModelAndView();
         //添加数据
         mv.addObject("myName", name);
         mv.addObject("myAge", age);
-        mv.setViewName("second");
+        mv.setViewName("show");
         //返回结果
         return mv;
     }

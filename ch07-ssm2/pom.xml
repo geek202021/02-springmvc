@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.jun</groupId>
-  <artifactId>ch03-ssm</artifactId>
+  <artifactId>ch07-ssm2</artifactId>
   <version>1.0</version>
   <packaging>war</packaging>
 
@@ -90,9 +90,7 @@
       <version>1.18.10</version>
       <scope>provided</scope>
     </dependency>
-
   </dependencies>
-
   <build>
     <resources>
       <resource>
@@ -104,7 +102,7 @@
           <include>**/*.xml</include>
         </includes>
         <filtering>false</filtering>
-    </resource>
-  </resources>
+      </resource>
+    </resources>
   </build>
 </project>

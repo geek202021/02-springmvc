@@ -31,9 +31,20 @@ public class MyInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("=====MyInterceptor拦截器的preHandle====");
-        //如果return false，可以加一个提示
-//        request.getRequestDispatcher("/tips.jsp").forward(request,response);
-        return true;
+        //获取登录的账号信息
+        String username ="";
+        Object attr = request.getSession().getAttribute("username");
+        if (attr != null) {
+            username=(String)attr;
+        }
+        //判断账号
+        if ("zhangsan".equals(username)) {
+            return true;
+        } else {
+            //如果return false，可以加一个提示
+        request.getRequestDispatcher("/tips.jsp").forward(request,response);
+            return false;
+        }
     }
 
     @Override

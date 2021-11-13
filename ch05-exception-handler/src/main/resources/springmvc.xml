@@ -25,4 +25,15 @@
     <context:component-scan base-package="com.jun.handle"/>
     <!--声明注解驱动：创建HttpMessageConverter接口的7个实现类对象-->
     <mvc:annotation-driven/>
+
+    <!--声明拦截器-->
+    <mvc:interceptors>
+        <!--声明第一个拦截器-->
+        <mvc:interceptor>
+            <!--指定拦截器的拦截地址：path:拦截的uri地址，使用**通配符-->
+            <mvc:mapping path="/**"/>
+            <!--指定使用的拦截器：表示所有请求都先经过MyInterceptor拦截器验证处理-->
+            <bean class="com.jun.handle.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>

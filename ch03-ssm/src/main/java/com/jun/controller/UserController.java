@@ -5,7 +5,10 @@ import com.jun.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 /**
  * @author HuangJun7
@@ -34,5 +37,12 @@ public class UserController {
         mv.addObject("msg", user.getName() + "," + msg);
         mv.setViewName("result");
         return mv;
+    }
+
+    @RequestMapping("/queryUsers.do")
+    @ResponseBody
+    public List<User> queryUsers() {
+        List<User> users = service.queryUsers();
+        return users;
     }
 }

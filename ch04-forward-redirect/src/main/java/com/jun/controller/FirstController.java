@@ -18,12 +18,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 1.创建控制器（处理器）对象
- *  控制器：叫做后端控制器（back controller），自定义的类处理请求的。
- * 2.RequestMapping作用：把指定的请求，交给指定的方法处理，等同于url-pattern
- * 3.返回值ModelAndView：表示本次请求的处理结果（数据和视图） Model表示数据
  * @author HuangJun7
- * @date 2021-11-11 16:46
+ * @date 2021-11-13 10:46
  */
 @Controller
 public class FirstController {
@@ -45,4 +41,26 @@ public class FirstController {
         return mv;
     }
 
+    /**
+     * 当控制器方法返回ModelAndView实现重定向
+     * 语法：mv.setViewName("redirect:视图完整路径");
+     * redirect特点：不和视图解析器一同工作，就当项目中没哟视图解析器
+     * 框架提供的重定向的功能：
+     * 1.框架可以实现两次请求之间的数据传递，把第一个请求中的Model里面简单类型的数据，转为字符串，
+     *   附加到目标页面的后面，做get参数传递。可以在目标页面中获取参数值使用。
+     * http://localhost:8080/ch04_forward_redirect/second.jsp?myName=Sisyphus&myAge=34
+     * 2.在目标页面中，可以使用${param.参数名}，获取参数的值
+     * 3.重定向不能访问受保护的文件夹下的页面：/WEB-INF
+     */
+    @RequestMapping("/doRedirect.do")
+    public ModelAndView doRedirect(String name, Integer age) {
+        System.out.println("doRedirect, name="+name+",age="+age);
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("myName", name);
+        mv.addObject("myAge", age);
+        mv.setViewName("redirect:/second.jsp");
+        //重定向不能访问/WEB-INF
+        //mv.setViewName("redirect:/WEB-INF/view/second.jsp");
+        return mv;
+    }
 }

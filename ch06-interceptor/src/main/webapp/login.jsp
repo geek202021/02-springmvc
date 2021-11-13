@@ -1,9 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Error</title>
+    <title>登录</title>
 </head>
 <body>
-    ageError.jsp,${tips}
+    登录操作!
+    <%
+        session.setAttribute("username","zhangsan");
+    %>
 </body>
 </html>

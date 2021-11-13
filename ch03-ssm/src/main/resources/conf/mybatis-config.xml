@@ -11,6 +11,6 @@
 
     <mappers>
         <!--告诉 mybatis 要执行的 sql 语句的位置-->
-        <mapper resource="com/jun/mapper/UserMapper.xml"/>
+        <mapper resource="classpath:com/jun/mapper/UserMapper.xml"/>
     </mappers>
 </configuration>

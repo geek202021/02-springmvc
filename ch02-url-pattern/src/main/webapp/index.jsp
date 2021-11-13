@@ -1,8 +1,13 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    String basePath = request.getScheme() + "://" + request.getServerName()
+            +":"+request.getServerPort()+request.getContextPath()+"/";
+%>
 <html>
 <head>
     <title>ch02-url-pattern</title>
+    <base href="<%=basePath%>"/>
     <script type="text/javascript" src="js/jquery-3.4.1.js"></script>
 </head>
 <body>
