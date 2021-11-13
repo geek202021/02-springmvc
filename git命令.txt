@@ -1,1 +1,8 @@
-git@github.com:geek202021/02-springmvc.git
+$ git init
+$ git add .
+$ git commit -m "2021-11-12 22:43:13 first commit"
+$ git status
+$ git log --pretty=oneline
+$ git remote add origin git@github.com:geek202021/02-springmvc.git
+$ git remote show origin
+$ git push -u origin master

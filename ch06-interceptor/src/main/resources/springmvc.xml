@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--申明组件扫描器-->
+    <context:component-scan base-package="com.jun" use-default-filters="false">
+        <!--只扫描@Controller控制器-->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+    <!--配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--异常处理:告诉框架有定义的异常类-->
+    <context:component-scan base-package="com.jun.handle"/>
+    <!--声明注解驱动：创建HttpMessageConverter接口的7个实现类对象-->
+    <mvc:annotation-driven/>
+
+    <!--声明拦截器-->
+    <mvc:interceptors>
+        <!--声明第一个拦截器-->
+        <mvc:interceptor>
+            <!--指定拦截器的拦截地址：path:拦截的uri地址，使用**通配符-->
+            <mvc:mapping path="/**"/>
+            <!--指定使用的拦截器：表示所有请求都先经过MyInterceptor拦截器验证处理-->
+            <bean class="com.jun.handle.MyInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+</beans>
